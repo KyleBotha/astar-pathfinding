@@ -1,6 +1,8 @@
 Step_allowance=15
 
-Coal,0
+Coal,2
+5,5
+6,6
 
 Fish,0
 
