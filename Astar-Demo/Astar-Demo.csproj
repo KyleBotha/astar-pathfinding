@@ -54,6 +54,7 @@
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="GridInputs.cs" />
     <Compile Include="Node.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="frmWindow.Designer.cs">
       <DependentUpon>frmWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="RunSimulation.cs" />
     <Compile Include="State.cs" />
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
