@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace Astar_Demo
 {
@@ -268,8 +269,30 @@ namespace Astar_Demo
             }
             MessageBox.Show("Neighbors updated."); 
         }
+        
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
         public void make_grid()
         {
+            AllocConsole();
+            
+            string input_text = System.IO.File.ReadAllText(@"C:\Users\neil.foxcroft\Downloads\1.txt");
+            Console.WriteLine(input_text);
+            
+            var regex = new Regex(@"(?<=map_size=)\d+");
+            var width = regex.Match(input_text);
+            
+            var regex2 = new Regex(@"(?<=map_size=\d,)\d+");
+            var height = regex2.Match(input_text);
+            
+            var regex3 = new Regex(@"(?<=map_size=\d,\d)\+");
+            var gird = regex3.Match(input_text);
+            
+            Console.WriteLine(width);
+            Console.WriteLine(height);
+            Console.WriteLine(gird);
+            
             int id = 0;
             int node_width = (int)(this.width / this.numOfCols);
             int node_height = (int)(this.height / this.numOfRows);
