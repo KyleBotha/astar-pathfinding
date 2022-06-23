@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +18,7 @@ namespace Astar_Demo
         public int DEFAULT_FORM_HEIGHT = 800;
         public int DEFAULT_NUM_COLS = 50; 
         public int DEFAULT_NUM_ROWS = 50;
+        public FileReader fileReader = new FileReader(); 
         public frmSettings()
         {
             InitializeComponent();
@@ -24,9 +27,18 @@ namespace Astar_Demo
             txtNumOfCols.Text = DEFAULT_NUM_COLS.ToString(); 
             txtNumOfRows.Text = DEFAULT_NUM_ROWS.ToString();
         }
-
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
         private void frmSettings_Load(object sender, EventArgs e)
         {
+            AllocConsole();
+            
+            string path = Directory.GetCurrentDirectory() + @"../../";
+            string location = path + @"1.txt";
+            
+            Console.WriteLine(location);
+            fileReader.ReadFile(@"C:\Dev\EC\astar-pathfinding\Astar-Demo\1.tx"); 
 
         }
 
