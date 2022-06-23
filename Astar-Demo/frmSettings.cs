@@ -32,24 +32,30 @@ namespace Astar_Demo
         static extern bool AllocConsole();
         private void frmSettings_Load(object sender, EventArgs e)
         {
+            GridInputs inputs = new GridInputs(); 
             AllocConsole();
             
-            string path = Directory.GetCurrentDirectory() + @"../../";
-            string location = path + @"1.txt";
-            
-            Console.WriteLine(location);
-            fileReader.ReadFile(@"C:\Dev\EC\astar-pathfinding\Astar-Demo\1.tx"); 
+            string path = Directory.GetCurrentDirectory() + @"../../../";
+
+            var case1 = Path.GetFullPath(Path.Combine(path, @"1.txt"));
+            string filecontents = fileReader.ReadFile(case1);
+            Console.WriteLine(filecontents);
+            string firstline = filecontents.Substring(0, filecontents.IndexOf(Environment.NewLine));
+            Console.WriteLine(firstline);
+            var sa = firstline.Split('=')[1];
+            inputs.StepAllowance = Int32.Parse(sa); 
+            Console.WriteLine(inputs.StepAllowance);
 
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            frmWindow Window = new frmWindow();
-            Window.Size = new Size(Convert.ToInt32(txtWindowWidth.Text), Convert.ToInt32(txtWindowHeight.Text));
-            Window.NumOfCols = Convert.ToInt32(txtNumOfCols.Text); 
-            Window.NumOfRows = Convert.ToInt32(txtNumOfRows.Text);
-          
-            Window.Show();
+            // frmWindow Window = new frmWindow();
+            // Window.Size = new Size(Convert.ToInt32(txtWindowWidth.Text), Convert.ToInt32(txtWindowHeight.Text));
+            // Window.NumOfCols = Convert.ToInt32(txtNumOfCols.Text); 
+            // Window.NumOfRows = Convert.ToInt32(txtNumOfRows.Text);
+            //
+            // Window.Show();
         }
     }
 }
